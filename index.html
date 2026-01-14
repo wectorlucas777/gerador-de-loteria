@@ -1,44 +1,38 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Avançado -->
+    <title>Sorteio Master - Gerador de Palpites para Loterias Caixa</title>
+    <meta name="description" content="Gerador inteligente de números para Mega-Sena, Lotofácil, Quina e outras loterias. Aumente suas chances com palpites aleatórios baseados em estatísticas.">
+    <meta name="keywords" content="gerador loterias, palpites mega-sena, lotofácil, quina, sorteio master, números da sorte, loterias caixa">
+    <meta name="author" content="Sorteio Master">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#10b981">
+
+    <!-- Open Graph / Facebook / WhatsApp -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://seusite.com.br/">
+    <meta property="og:title" content="Sorteio Master - Gerador de Palpites">
+    <meta property="og:description" content="Gere seus jogos de loteria de forma fácil, rápida e com visual moderno.">
+    <meta property="og:image" content="https://seusite.com.br/assets/share-image.png">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://seusite.com.br/">
+
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-DX0SK05PR5"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'G-DX0SK05PR5');
     </script>
 
     <!-- Google AdSense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4849583209703317"
-     crossorigin="anonymous"></script>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- SEO Básico -->
-    <title>Gerador de Loterias Caixa - Palpites para Mega-Sena, Lotofácil e Mais</title>
-    <meta name="description" content="Gere números da sorte para Mega-Sena, Lotofácil, Quina, Lotomania e outras Loterias Caixa. Ferramenta gratuita, rápida e otimizada para criar seus jogos e bolões.">
-    <meta name="keywords" content="gerador loterias, mega-sena, lotofácil, quina, palpites loteria, gerador de números, sorteio caixa, loterias brasil">
-    <meta name="author" content="Sorteio Master">
-    <meta name="robots" content="index, follow">
-
-    <!-- Open Graph / Facebook / WhatsApp -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://seusite.com.br/">
-    <meta property="og:title" content="Gerador de Palpites - Loterias Caixa">
-    <meta property="og:description" content="Aumente suas chances com nosso gerador inteligente para Mega-Sena, Lotofácil e muito mais.">
-    <meta property="og:image" content="https://seusite.com.br/assets/share-image.png">
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:title" content="Gerador de Palpites - Loterias Caixa">
-    <meta property="twitter:description" content="Gere seus jogos de loteria de forma fácil e rápida.">
-
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://seusite.com.br/">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4849583209703317" crossorigin="anonymous"></script>
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -122,6 +116,17 @@
             background-color: rgba(0, 0, 0, 0.6);
             backdrop-filter: blur(4px);
         }
+
+        /* Page Transitions */
+        .page-content {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+        .page-content.active {
+            display: flex;
+            opacity: 1;
+        }
     </style>
     <script>
         tailwind.config = {
@@ -142,7 +147,7 @@
         }
     </script>
 </head>
-<body class="min-h-screen p-4 transition-colors duration-700 md:p-8" id="mainBody">
+<body class="min-h-screen p-4 transition-colors duration-700 md:p-8 flex flex-col" id="mainBody">
 
     <!-- Background Decoration -->
     <div class="fixed inset-0 z-0 opacity-20 pointer-events-none" id="bgPattern">
@@ -150,526 +155,298 @@
         <div class="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full mix-blend-overlay filter blur-3xl animate-pulse" style="animation-delay: 1s;"></div>
     </div>
 
-    <!-- Main Container -->
-    <!-- Removed max-w-7xl to allow full width on desktop -->
-    <main class="relative z-10 w-full mx-auto flex flex-col gap-10">
-        
-        <!-- Header / Logo Area (Optimized Layout) -->
-        <header class="w-full flex flex-col sm:flex-row justify-between items-center gap-4 px-2">
-            <!-- Left: Logo -->
-            <div class="flex items-center gap-3 self-start sm:self-auto">
-                <div class="inline-flex items-center justify-center p-3 rounded-2xl bg-white/20 backdrop-blur-sm shadow-sm">
-                    <i class="ph-fill ph-clover text-3xl text-white"></i>
+    <!-- Common Header -->
+    <header class="relative z-20 w-full max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4 px-2 mb-8">
+        <!-- Left: Logo (Clickable Home) -->
+        <a href="#home" class="flex items-center gap-3 self-start sm:self-auto group text-left cursor-pointer select-none">
+            <div class="inline-flex items-center justify-center p-3 rounded-2xl bg-white/20 backdrop-blur-sm shadow-sm group-hover:bg-white/30 transition-colors">
+                <i class="ph-fill ph-clover text-3xl text-white"></i>
+            </div>
+            <div>
+                <h1 class="text-2xl font-extrabold text-white tracking-wide uppercase leading-none">Sorteio Master</h1>
+                <p class="text-white/80 text-sm font-medium mt-0.5">Selecione e gere sua sorte</p>
+            </div>
+        </a>
+
+        <!-- Right: Actions (Share & Donate) -->
+        <div class="flex items-center gap-3 w-full sm:w-auto justify-end">
+            <button onclick="shareSite()" class="flex-1 sm:flex-none justify-center h-12 px-4 rounded-2xl bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 text-white transition-all hover:scale-105 active:scale-95 shadow-sm flex items-center gap-2 group" title="Compartilhar site" aria-label="Compartilhar">
+                <i class="ph-bold ph-share-network text-xl group-hover:rotate-12 transition-transform"></i>
+                <span class="font-bold text-sm">Compartilhar</span>
+            </button>
+
+            <button onclick="openModal('donationModal')" class="flex-1 sm:flex-none justify-start h-12 px-2 pr-4 rounded-2xl bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 transition-all hover:scale-105 active:scale-95 shadow-sm flex items-center gap-3 group text-left" aria-label="Apoiar o projeto">
+                <div class="bg-yellow-400 text-yellow-900 w-8 h-8 flex items-center justify-center rounded-xl group-hover:bg-yellow-300 transition-colors shadow-sm">
+                    <i class="ph-fill ph-coffee text-lg"></i>
                 </div>
-                <div class="text-left">
-                    <h1 class="text-2xl font-extrabold text-white tracking-wide uppercase leading-none">Sorteio Master</h1>
-                    <p class="text-white/80 text-sm font-medium mt-0.5">Selecione e gere sua sorte</p>
+                <div class="flex flex-col justify-center">
+                    <span class="font-bold text-white text-sm leading-none">Apoie</span>
+                    <span class="text-[10px] text-white/80 leading-none mt-0.5 hidden sm:inline-block">o Projeto</span>
                 </div>
+            </button>
+        </div>
+    </header>
+
+    <!-- CONTENT WRAPPER -->
+    <div class="relative z-10 w-full max-w-7xl mx-auto flex-grow">
+
+        <!-- ================= PAGE: HOME (GENERATOR) ================= -->
+        <div id="page-home" class="page-content active flex-col gap-10">
+            <!-- Central Generator Section -->
+            <div class="w-full flex flex-col items-center gap-6">
+                
+                <!-- AdSense Placeholder Top -->
+                <div id="ad-top-banner" class="w-full max-w-lg h-[50px] rounded-lg ad-placeholder hidden">
+                    Publicidade (Topo)
+                </div>
+
+                <!-- SEO/Intro Text -->
+                <section class="w-full max-w-lg bg-white/80 backdrop-blur-sm rounded-3xl p-5 shadow-sm text-gray-700 border border-white/40">
+                    <h3 class="font-bold text-gray-800 text-sm mb-2 flex items-center gap-2">
+                        <i class="ph-bold ph-info text-gray-500"></i> Sobre o Gerador
+                    </h3>
+                    <p class="text-xs leading-relaxed text-gray-600">
+                        O <strong>Sorteio Master</strong> é uma ferramenta gratuita desenvolvida para ajudar apostadores a criar palpites otimizados para as principais loterias da Caixa Econômica Federal. Nossos algoritmos garantem aleatoriedade total para seus jogos.
+                    </p>
+                </section>
+
+                <!-- App Card -->
+                <article class="w-full max-w-lg glass-panel rounded-[2.5rem] shadow-2xl overflow-hidden transition-all duration-500">
+                    
+                    <!-- Game Selector -->
+                    <nav class="p-6 pb-2" aria-label="Seletor de Loterias">
+                        <label class="text-xs font-bold text-gray-400 uppercase tracking-wider ml-2 mb-2 block">Escolha a Loteria</label>
+                        <div class="flex space-x-3 overflow-x-auto hide-scroll pb-4 cursor-grab active:cursor-grabbing" id="gameSelector">
+                            <!-- Buttons JS Injected -->
+                        </div>
+                    </nav>
+
+                    <hr class="border-gray-100 mx-6">
+
+                    <!-- Controls -->
+                    <section class="p-6">
+                        <div class="mb-4">
+                            <h2 class="text-2xl font-bold text-gray-800" id="gameTitle">Mega-Sena</h2>
+                            <p class="text-xs text-gray-500 font-medium mt-1" id="gameRules">1 a 60 • Escolha 6 números</p>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-3 mb-6">
+                            <!-- Num Count -->
+                            <div class="bg-gray-50 rounded-2xl p-3 border border-gray-100 flex flex-col justify-between">
+                                <label class="text-[10px] font-bold text-gray-400 uppercase tracking-wide mb-1">Números / Jogo</label>
+                                <div class="flex items-center justify-between bg-white rounded-xl p-1 shadow-sm">
+                                    <button onclick="adjustCount(-1)" class="w-8 h-8 flex items-center justify-center rounded-lg text-gray-500 hover:bg-red-50 hover:text-red-500 transition active:scale-90" aria-label="Diminuir números"><i class="ph-bold ph-minus"></i></button>
+                                    <span id="numberCountDisplay" class="font-bold text-gray-800 text-lg mx-1">6</span>
+                                    <button onclick="adjustCount(1)" class="w-8 h-8 flex items-center justify-center rounded-lg text-gray-500 hover:bg-green-50 hover:text-green-500 transition active:scale-90" aria-label="Aumentar números"><i class="ph-bold ph-plus"></i></button>
+                                </div>
+                            </div>
+                            <!-- Game Count -->
+                            <div class="bg-gray-50 rounded-2xl p-3 border border-gray-100 flex flex-col justify-between">
+                                <label class="text-[10px] font-bold text-gray-400 uppercase tracking-wide mb-1">Qtd. Jogos</label>
+                                <div class="flex items-center justify-between bg-white rounded-xl p-1 shadow-sm">
+                                    <button onclick="adjustGameCount(-1)" class="w-8 h-8 flex items-center justify-center rounded-lg text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition active:scale-90" aria-label="Diminuir quantidade de jogos"><i class="ph-bold ph-minus"></i></button>
+                                    <span id="gamesCountDisplay" class="font-bold text-gray-800 text-lg mx-1">1</span>
+                                    <button onclick="adjustGameCount(1)" class="w-8 h-8 flex items-center justify-center rounded-lg text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition active:scale-90" aria-label="Aumentar quantidade de jogos"><i class="ph-bold ph-plus"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- AdSense Placeholder Middle -->
+                        <div id="ad-content-middle" class="w-full h-[60px] mb-4 rounded-xl ad-placeholder hidden">Publicidade</div>
+
+                        <!-- Results -->
+                        <div id="resultsWrapper" class="bg-gray-50 rounded-3xl border border-gray-100 p-4 min-h-[140px] max-h-[400px] overflow-y-auto custom-scroll relative transition-colors duration-300">
+                            <div id="resultsArea" class="flex flex-col gap-3">
+                                <div class="text-center text-gray-400 py-8 flex flex-col items-center justify-center h-full w-full">
+                                    <i class="ph-duotone ph-magic-wand text-4xl mb-2 opacity-50"></i>
+                                    <p class="text-sm">Configure e toque em gerar</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Buttons -->
+                        <div class="mt-6 grid grid-cols-4 gap-3">
+                            <button onclick="generateBatch()" id="btnGenerate" class="col-span-3 py-4 rounded-2xl bg-gray-900 text-white font-bold text-lg shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2 group active:scale-95">
+                                <i class="ph-bold ph-shuffle group-hover:rotate-180 transition-transform duration-500"></i>
+                                Gerar Jogos
+                            </button>
+                            <button onclick="handleMainCopy()" id="btnCopyMain" class="col-span-1 py-4 rounded-2xl bg-white border-2 border-gray-200 text-gray-600 font-bold shadow-sm hover:border-gray-400 hover:text-gray-800 transition-colors flex items-center justify-center active:scale-95 group relative" title="Copiar">
+                                <span id="copyCountBadge" class="absolute -top-2 -right-2 bg-gray-900 text-white text-[10px] font-bold px-2 py-0.5 rounded-full hidden">0</span>
+                                <i id="copyIconMain" class="ph-bold ph-copy text-xl"></i>
+                            </button>
+                        </div>
+                    </section>
+                </article>
+
+                <!-- AdSense Placeholder Bottom -->
+                <div id="ad-bottom-rect" class="w-full max-w-lg h-[100px] rounded-2xl ad-placeholder hidden">Publicidade (Rodapé)</div>
             </div>
 
-            <!-- Right: Actions (Share & Donate) -->
-            <div class="flex items-center gap-3 w-full sm:w-auto justify-end">
-                <!-- Share Button -->
-                <button onclick="shareSite()" class="flex-1 sm:flex-none justify-center h-12 px-4 rounded-2xl bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 text-white transition-all hover:scale-105 active:scale-95 shadow-sm flex items-center gap-2 group" title="Compartilhar site">
-                    <i class="ph-bold ph-share-network text-xl group-hover:rotate-12 transition-transform"></i>
-                    <span class="font-bold text-sm">Compartilhar</span>
-                </button>
-
-                <!-- Donation Button -->
-                <button onclick="openModal('donationModal')" class="flex-1 sm:flex-none justify-start h-12 px-2 pr-4 rounded-2xl bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 transition-all hover:scale-105 active:scale-95 shadow-sm flex items-center gap-3 group text-left">
-                    <div class="bg-yellow-400 text-yellow-900 w-8 h-8 flex items-center justify-center rounded-xl group-hover:bg-yellow-300 transition-colors shadow-sm">
-                        <i class="ph-fill ph-coffee text-lg"></i>
-                    </div>
-                    <div class="flex flex-col justify-center">
-                        <span class="font-bold text-white text-sm leading-none">Apoie</span>
-                        <span class="text-[10px] text-white/80 leading-none mt-0.5 hidden sm:inline-block">o Projeto</span>
-                    </div>
-                </button>
-            </div>
-        </header>
-
-        <!-- Central Generator Section -->
-        <div class="w-full flex flex-col items-center gap-6">
-            
-            <!-- AD SPACE: Top Banner (Mobile only or Sidebar Desktop) -->
-            <div id="ad-top-banner" class="w-full max-w-lg h-[50px] rounded-lg ad-placeholder hidden">
-                Publicidade (Topo)
-            </div>
-
-            <!-- Intro Section -->
-            <section class="w-full max-w-lg bg-white/80 backdrop-blur-sm rounded-3xl p-5 shadow-sm text-gray-700 border border-white/40">
-                <h3 class="font-bold text-gray-800 text-sm mb-2 flex items-center gap-2">
-                    <i class="ph-bold ph-info text-gray-500"></i> Sobre o Gerador
-                </h3>
-                <p class="text-xs leading-relaxed text-gray-600">
-                    O <strong>Sorteio Master</strong> é uma ferramenta gratuita desenvolvida para ajudar apostadores a criar palpites otimizados para as principais loterias da Caixa Econômica Federal.
-                </p>
+            <!-- Guide Section -->
+            <section class="bg-white/90 backdrop-blur-sm rounded-[2.5rem] p-8 shadow-lg text-gray-700 w-full">
+                <div class="text-center mb-10">
+                    <h3 class="font-extrabold text-gray-900 text-3xl mb-3">Guia Completo das Loterias</h3>
+                    <p class="text-gray-500 max-w-2xl mx-auto leading-relaxed">Entenda como funciona cada modalidade, quantas dezenas você pode escolher e o que é preciso acertar para levar o prêmio.</p>
+                </div>
+                <div id="guideCardsContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6">
+                    <!-- Cards will be rendered by JS -->
+                </div>
             </section>
 
-            <!-- App Card -->
-            <article class="w-full max-w-lg glass-panel rounded-[2.5rem] shadow-2xl overflow-hidden transition-all duration-500">
-                
-                <!-- Game Selector (Horizontal Scroll) -->
-                <nav class="p-6 pb-2" aria-label="Seletor de Loterias">
-                    <label class="text-xs font-bold text-gray-400 uppercase tracking-wider ml-2 mb-2 block">Escolha a Loteria</label>
-                    <div class="flex space-x-3 overflow-x-auto hide-scroll pb-4" id="gameSelector">
-                        <!-- Buttons injected via JS -->
-                    </div>
-                </nav>
-
-                <hr class="border-gray-100 mx-6">
-
-                <!-- Controls Area -->
-                <section class="p-6">
-                    <!-- Header Info -->
-                    <div class="mb-4">
-                        <h2 class="text-2xl font-bold text-gray-800" id="gameTitle">Mega-Sena</h2>
-                        <p class="text-xs text-gray-500 font-medium mt-1" id="gameRules">1 a 60 • Escolha 6 números</p>
-                    </div>
-
-                    <!-- Dual Controls: Numbers & Games -->
-                    <div class="grid grid-cols-2 gap-3 mb-6">
-                        <!-- Numbers Per Game Control -->
-                        <div class="bg-gray-50 rounded-2xl p-3 border border-gray-100 flex flex-col justify-between">
-                            <label class="text-[10px] font-bold text-gray-400 uppercase tracking-wide mb-1">Números / Jogo</label>
-                            <div class="flex items-center justify-between bg-white rounded-xl p-1 shadow-sm">
-                                <button onclick="adjustCount(-1)" class="w-8 h-8 flex items-center justify-center rounded-lg text-gray-500 hover:bg-red-50 hover:text-red-500 transition active:scale-90" aria-label="Diminuir números">
-                                    <i class="ph-bold ph-minus"></i>
-                                </button>
-                                <span id="numberCountDisplay" class="font-bold text-gray-800 text-lg mx-1">6</span>
-                                <button onclick="adjustCount(1)" class="w-8 h-8 flex items-center justify-center rounded-lg text-gray-500 hover:bg-green-50 hover:text-green-500 transition active:scale-90" aria-label="Aumentar números">
-                                    <i class="ph-bold ph-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-
-                        <!-- Quantity of Games Control -->
-                        <div class="bg-gray-50 rounded-2xl p-3 border border-gray-100 flex flex-col justify-between">
-                            <label class="text-[10px] font-bold text-gray-400 uppercase tracking-wide mb-1">Qtd. Jogos</label>
-                            <div class="flex items-center justify-between bg-white rounded-xl p-1 shadow-sm">
-                                <button onclick="adjustGameCount(-1)" class="w-8 h-8 flex items-center justify-center rounded-lg text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition active:scale-90" aria-label="Diminuir quantidade de jogos">
-                                    <i class="ph-bold ph-minus"></i>
-                                </button>
-                                <span id="gamesCountDisplay" class="font-bold text-gray-800 text-lg mx-1">1</span>
-                                <button onclick="adjustGameCount(1)" class="w-8 h-8 flex items-center justify-center rounded-lg text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition active:scale-90" aria-label="Aumentar quantidade de jogos">
-                                    <i class="ph-bold ph-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- AD SPACE: In-Content -->
-                    <div id="ad-content-middle" class="w-full h-[60px] mb-4 rounded-xl ad-placeholder hidden">
-                        Publicidade
-                    </div>
-
-                    <!-- Results Display Area -->
-                    <div id="resultsWrapper" class="bg-gray-50 rounded-3xl border border-gray-100 p-4 min-h-[140px] max-h-[400px] overflow-y-auto custom-scroll relative transition-colors duration-300">
-                        <div id="resultsArea" class="flex flex-col gap-3">
-                            <!-- Empty State -->
-                            <div class="text-center text-gray-400 py-8 flex flex-col items-center justify-center h-full w-full">
-                                <i class="ph-duotone ph-magic-wand text-4xl mb-2 opacity-50"></i>
-                                <p class="text-sm">Configure e toque em gerar</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Action Buttons -->
-                    <div class="mt-6 grid grid-cols-4 gap-3">
-                        <button onclick="generateBatch()" id="btnGenerate" class="col-span-3 py-4 rounded-2xl bg-gray-900 text-white font-bold text-lg shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2 group active:scale-95">
-                            <i class="ph-bold ph-shuffle group-hover:rotate-180 transition-transform duration-500"></i>
-                            Gerar Jogos
-                        </button>
-                        <button onclick="handleMainCopy()" id="btnCopyMain" class="col-span-1 py-4 rounded-2xl bg-white border-2 border-gray-200 text-gray-600 font-bold shadow-sm hover:border-gray-400 hover:text-gray-800 transition-colors flex items-center justify-center active:scale-95 group relative" title="Copiar">
-                            <span id="copyCountBadge" class="absolute -top-2 -right-2 bg-gray-900 text-white text-[10px] font-bold px-2 py-0.5 rounded-full hidden">0</span>
-                            <i id="copyIconMain" class="ph-bold ph-copy text-xl"></i>
-                        </button>
-                    </div>
-                </section>
-            </article>
-
-            <!-- AD SPACE: Bottom -->
-            <div id="ad-bottom-rect" class="w-full max-w-lg h-[100px] rounded-2xl ad-placeholder hidden">
-                Publicidade (Rodapé)
-            </div>
+            <!-- FAQ Section (New for SEO/AdSense Content Value) -->
+            <section class="bg-white/90 backdrop-blur-sm rounded-[2.5rem] p-8 shadow-lg text-gray-700 w-full mt-[-20px]">
+                <h3 class="font-bold text-gray-800 text-xl mb-6">Perguntas Frequentes</h3>
+                <div class="space-y-4">
+                    <details class="group bg-gray-50 rounded-2xl p-4 cursor-pointer">
+                        <summary class="font-bold text-gray-800 flex justify-between items-center list-none">
+                            <span>Como funciona o Gerador de Números?</span>
+                            <i class="ph-bold ph-caret-down group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <p class="text-sm text-gray-600 mt-2 leading-relaxed">Nosso sistema utiliza algoritmos matemáticos de geração pseudo-aleatória (`Math.random`) para criar combinações únicas e imparciais, simulando a aleatoriedade de um sorteio real.</p>
+                    </details>
+                    <details class="group bg-gray-50 rounded-2xl p-4 cursor-pointer">
+                        <summary class="font-bold text-gray-800 flex justify-between items-center list-none">
+                            <span>O site garante que vou ganhar?</span>
+                            <i class="ph-bold ph-caret-down group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <p class="text-sm text-gray-600 mt-2 leading-relaxed">Não. Loteria é um jogo de azar e as probabilidades são fixas matematicamente. O gerador serve para ajudar você a escolher números sem vícios (como datas de aniversário), mas não altera a chance estatística de vitória.</p>
+                    </details>
+                    <details class="group bg-gray-50 rounded-2xl p-4 cursor-pointer">
+                        <summary class="font-bold text-gray-800 flex justify-between items-center list-none">
+                            <span>Quais jogos posso gerar aqui?</span>
+                            <i class="ph-bold ph-caret-down group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <p class="text-sm text-gray-600 mt-2 leading-relaxed">Suportamos todas as principais loterias da Caixa: Mega-Sena, Lotofácil, Quina, Lotomania, Dupla Sena, Dia de Sorte, +Milionária e Timemania.</p>
+                    </details>
+                </div>
+            </section>
         </div>
 
-        <!-- Guide Section (Below Generator) -->
-        <section class="bg-white/90 backdrop-blur-sm rounded-[2.5rem] p-8 shadow-lg text-gray-700 w-full">
-            <div class="text-center mb-10">
-                <h3 class="font-extrabold text-gray-900 text-3xl mb-3">Guia Completo das Loterias</h3>
-                <p class="text-gray-500 max-w-2xl mx-auto leading-relaxed">
-                    Entenda como funciona cada modalidade, quantas dezenas você pode escolher e o que é preciso acertar para levar o prêmio. Utilize nosso gerador para criar suas estratégias.
-                </p>
-            </div>
-
-            <!-- Grid Layout for Guide Cards - Expanded for large screens -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6">
-                
-                <!-- Mega-Sena -->
-                <div class="bg-white p-6 rounded-3xl border border-gray-100 shadow-sm hover:shadow-md transition-all hover:-translate-y-1 flex flex-col h-full">
-                    <h4 class="font-bold text-emerald-700 text-xl mb-3 flex items-center gap-2">
-                        <i class="ph-fill ph-clover text-2xl"></i> Mega-Sena
-                    </h4>
-                    <div class="space-y-3 text-sm flex flex-col flex-grow">
-                        <p class="text-gray-600">A queridinha do Brasil. Paga milhões para quem acertar os 6 números sorteados.</p>
-                        <ul class="bg-emerald-50/50 p-4 rounded-xl space-y-2 mt-auto">
-                            <li class="flex items-start gap-2"><i class="ph-bold ph-hash text-emerald-600 mt-0.5"></i> <span><strong class="text-emerald-700">Universo:</strong> 60 números (01 a 60).</span></li>
-                            <li class="flex items-start gap-2"><i class="ph-bold ph-pencil-simple text-emerald-600 mt-0.5"></i> <span><strong class="text-emerald-700">Aposta:</strong> Escolha de 6 a 20 números.</span></li>
-                            <li class="flex items-start gap-2"><i class="ph-bold ph-trophy text-emerald-600 mt-0.5"></i> <span><strong class="text-emerald-700">Premiação:</strong> Ganha quem acertar 4, 5 ou 6 números.</span></li>
-                        </ul>
-                    </div>
+        <!-- ================= PAGE: TERMS ================= -->
+        <div id="page-terms" class="page-content flex-col items-center">
+            <section class="w-full max-w-3xl bg-white/95 backdrop-blur-md rounded-[2.5rem] p-8 md:p-12 shadow-xl">
+                <h2 class="text-3xl font-extrabold text-gray-800 mb-6 flex items-center gap-3"><i class="ph-fill ph-file-text text-gray-400"></i> Termos de Uso</h2>
+                <div class="prose prose-gray max-w-none text-gray-600 leading-relaxed space-y-6">
+                    <p>Bem-vindo ao <strong>Sorteio Master</strong>. Ao utilizar nosso site, você concorda com os seguintes termos:</p>
+                    <div><h4 class="font-bold text-gray-800 text-lg mb-2">1. Natureza do Serviço</h4><p>O Sorteio Master é uma ferramenta gratuita de entretenimento. Este site <strong>não realiza apostas</strong>, não processa pagamentos e não possui vínculo com a Caixa Econômica Federal.</p></div>
+                    <div><h4 class="font-bold text-gray-800 text-lg mb-2">2. Isenção de Garantias</h4><p>Os números são gerados aleatoriamente. Não há garantia de acerto ou ganho. O uso das combinações é de total responsabilidade do usuário.</p></div>
+                    <div><h4 class="font-bold text-gray-800 text-lg mb-2">3. Jogo Responsável</h4><p>O usuário declara ser maior de 18 anos. Jogos de loteria envolvem riscos. Jogue com moderação.</p></div>
                 </div>
+                <div class="mt-10 text-center"><a href="#home" class="px-8 py-3 bg-gray-900 text-white rounded-2xl font-bold hover:bg-gray-800 transition-all active:scale-95 shadow-lg inline-block">Voltar ao Gerador</a></div>
+            </section>
+        </div>
 
-                <!-- Lotofácil -->
-                <div class="bg-white p-6 rounded-3xl border border-gray-100 shadow-sm hover:shadow-md transition-all hover:-translate-y-1 flex flex-col h-full">
-                    <h4 class="font-bold text-fuchsia-700 text-xl mb-3 flex items-center gap-2">
-                        <i class="ph-fill ph-star text-2xl"></i> Lotofácil
-                    </h4>
-                    <div class="space-y-3 text-sm flex flex-col flex-grow">
-                        <p class="text-gray-600">Como o nome diz: fácil de apostar e fácil de ganhar. É uma das modalidades que mais premia.</p>
-                        <ul class="bg-fuchsia-50/50 p-4 rounded-xl space-y-2 mt-auto">
-                            <li class="flex items-start gap-2"><i class="ph-bold ph-hash text-fuchsia-600 mt-0.5"></i> <span><strong class="text-fuchsia-700">Universo:</strong> 25 números (01 a 25).</span></li>
-                            <li class="flex items-start gap-2"><i class="ph-bold ph-pencil-simple text-fuchsia-600 mt-0.5"></i> <span><strong class="text-fuchsia-700">Aposta:</strong> Escolha de 15 a 20 números.</span></li>
-                            <li class="flex items-start gap-2"><i class="ph-bold ph-trophy text-fuchsia-600 mt-0.5"></i> <span><strong class="text-fuchsia-700">Premiação:</strong> Ganha quem acertar 11 a 15 números.</span></li>
-                        </ul>
-                    </div>
+        <!-- ================= PAGE: PRIVACY ================= -->
+        <div id="page-privacy" class="page-content flex-col items-center">
+            <section class="w-full max-w-3xl bg-white/95 backdrop-blur-md rounded-[2.5rem] p-8 md:p-12 shadow-xl">
+                <h2 class="text-3xl font-extrabold text-gray-800 mb-6 flex items-center gap-3"><i class="ph-fill ph-lock-key text-gray-400"></i> Política de Privacidade</h2>
+                <div class="prose prose-gray max-w-none text-gray-600 leading-relaxed space-y-6">
+                    <p>Sua privacidade é importante. Esta política explica como tratamos suas informações:</p>
+                    <div><h4 class="font-bold text-gray-800 text-lg mb-2">1. Coleta de Dados</h4><p>Não coletamos dados pessoais. O processamento dos números ocorre no seu navegador.</p></div>
+                    <div><h4 class="font-bold text-gray-800 text-lg mb-2">2. Cookies e LGPD</h4><p>Utilizamos cookies de terceiros (Google AdSense e Analytics) para melhorar a experiência e exibir anúncios relevantes. Você pode gerenciar suas preferências no banner de cookies.</p></div>
+                    <div><h4 class="font-bold text-gray-800 text-lg mb-2">3. Armazenamento Local</h4><p>Usamos o LocalStorage do seu navegador apenas para lembrar suas preferências de uso (como o último jogo selecionado).</p></div>
                 </div>
+                <div class="mt-10 text-center"><a href="#home" class="px-8 py-3 bg-gray-900 text-white rounded-2xl font-bold hover:bg-gray-800 transition-all active:scale-95 shadow-lg inline-block">Voltar ao Gerador</a></div>
+            </section>
+        </div>
 
-                <!-- Quina -->
-                <div class="bg-white p-6 rounded-3xl border border-gray-100 shadow-sm hover:shadow-md transition-all hover:-translate-y-1 flex flex-col h-full">
-                    <h4 class="font-bold text-indigo-700 text-xl mb-3 flex items-center gap-2">
-                        <i class="ph-fill ph-diamond text-2xl"></i> Quina
-                    </h4>
-                    <div class="space-y-3 text-sm flex flex-col flex-grow">
-                        <p class="text-gray-600">Sorteios diários (segunda a sábado). Uma ótima opção para quem gosta de jogar com frequência.</p>
-                        <ul class="bg-indigo-50/50 p-4 rounded-xl space-y-2 mt-auto">
-                            <li class="flex items-start gap-2"><i class="ph-bold ph-hash text-indigo-600 mt-0.5"></i> <span><strong class="text-indigo-700">Universo:</strong> 80 números (01 a 80).</span></li>
-                            <li class="flex items-start gap-2"><i class="ph-bold ph-pencil-simple text-indigo-600 mt-0.5"></i> <span><strong class="text-indigo-700">Aposta:</strong> Escolha de 5 a 15 números.</span></li>
-                            <li class="flex items-start gap-2"><i class="ph-bold ph-trophy text-indigo-600 mt-0.5"></i> <span><strong class="text-indigo-700">Premiação:</strong> Ganha quem acertar 2, 3, 4 ou 5 números.</span></li>
-                        </ul>
-                    </div>
+        <!-- ================= PAGE: ABOUT ================= -->
+        <div id="page-about" class="page-content flex-col items-center">
+            <section class="w-full max-w-3xl bg-white/95 backdrop-blur-md rounded-[2.5rem] p-8 md:p-12 shadow-xl">
+                <h2 class="text-3xl font-extrabold text-gray-800 mb-6 flex items-center gap-3"><i class="ph-fill ph-info text-gray-400"></i> Sobre o Sorteio Master</h2>
+                <div class="text-gray-600 leading-relaxed space-y-6 text-lg">
+                    <p>O <strong>Sorteio Master</strong> nasceu para simplificar a vida dos apostadores. Utilizamos tecnologia para gerar combinações imparciais, fugindo dos vícios comuns como datas de aniversário.</p>
+                    <div class="bg-blue-50 p-6 rounded-2xl border border-blue-100 my-6"><h4 class="font-bold text-blue-800 mb-2">Nossa Filosofia</h4><p class="text-sm text-blue-700">Ferramenta gratuita, transparente e útil. Mantida pela comunidade e publicidade.</p></div>
                 </div>
+                <div class="mt-10 text-center"><a href="#home" class="px-8 py-3 bg-gray-900 text-white rounded-2xl font-bold hover:bg-gray-800 transition-all active:scale-95 shadow-lg inline-block">Voltar ao Gerador</a></div>
+            </section>
+        </div>
 
-                <!-- Lotomania -->
-                <div class="bg-white p-6 rounded-3xl border border-gray-100 shadow-sm hover:shadow-md transition-all hover:-translate-y-1 flex flex-col h-full">
-                    <h4 class="font-bold text-orange-600 text-xl mb-3 flex items-center gap-2">
-                        <i class="ph-fill ph-users-three text-2xl"></i> Lotomania
-                    </h4>
-                    <div class="space-y-3 text-sm flex flex-col flex-grow">
-                        <p class="text-gray-600">A loteria dos "azarados": você ganha até se não acertar nenhum número!</p>
-                        <ul class="bg-orange-50/50 p-4 rounded-xl space-y-2 mt-auto">
-                            <li class="flex items-start gap-2"><i class="ph-bold ph-hash text-orange-500 mt-0.5"></i> <span><strong class="text-orange-600">Universo:</strong> 100 números (00 a 99).</span></li>
-                            <li class="flex items-start gap-2"><i class="ph-bold ph-pencil-simple text-orange-500 mt-0.5"></i> <span><strong class="text-orange-600">Aposta:</strong> Escolha 50 números.</span></li>
-                            <li class="flex items-start gap-2"><i class="ph-bold ph-trophy text-orange-500 mt-0.5"></i> <span><strong class="text-orange-600">Premiação:</strong> Ganha acertando 20, 19, 18, 17, 16, 15 ou 0.</span></li>
-                        </ul>
-                    </div>
+        <!-- ================= PAGE: CONTACT ================= -->
+        <div id="page-contact" class="page-content flex-col items-center">
+            <section class="w-full max-w-3xl bg-white/95 backdrop-blur-md rounded-[2.5rem] p-8 md:p-12 shadow-xl">
+                <h2 class="text-3xl font-extrabold text-gray-800 mb-6 flex items-center gap-3"><i class="ph-fill ph-envelope-simple text-gray-400"></i> Contato</h2>
+                <div class="text-gray-600 leading-relaxed space-y-6 text-center">
+                    <p class="text-lg">Dúvidas ou sugestões?</p>
+                    <div class="py-8"><div class="inline-flex flex-col items-center justify-center p-8 bg-gray-50 rounded-3xl border border-gray-100 w-full max-w-sm"><div class="bg-white p-4 rounded-full shadow-sm mb-4 text-gray-800"><i class="ph-duotone ph-paper-plane-tilt text-4xl"></i></div><h3 class="font-bold text-gray-800 mb-1">Envie um e-mail</h3><a href="mailto:contato@sorteiomaster.com.br" class="text-blue-600 font-bold hover:underline text-lg">contato@sorteiomaster.com.br</a></div></div>
                 </div>
+                <div class="mt-10 text-center"><a href="#home" class="px-8 py-3 bg-gray-900 text-white rounded-2xl font-bold hover:bg-gray-800 transition-all active:scale-95 shadow-lg inline-block">Voltar ao Gerador</a></div>
+            </section>
+        </div>
 
-                <!-- +Milionária -->
-                <div class="bg-white p-6 rounded-3xl border border-gray-100 shadow-sm hover:shadow-md transition-all hover:-translate-y-1 flex flex-col h-full">
-                    <h4 class="font-bold text-slate-700 text-xl mb-3 flex items-center gap-2">
-                        <i class="ph-fill ph-coins text-2xl"></i> +Milionária
-                    </h4>
-                    <div class="space-y-3 text-sm flex flex-col flex-grow">
-                        <p class="text-gray-600">A nova loteria com prêmio mínimo garantido de R$ 10 milhões.</p>
-                        <ul class="bg-slate-50 p-4 rounded-xl space-y-2 mt-auto">
-                            <li class="flex items-start gap-2"><i class="ph-bold ph-hash text-slate-600 mt-0.5"></i> <span><strong class="text-slate-700">Matriz 1:</strong> 50 números. Escolha 6 a 12.</span></li>
-                            <li class="flex items-start gap-2"><i class="ph-bold ph-clover text-slate-600 mt-0.5"></i> <span><strong class="text-slate-700">Matriz 2:</strong> 6 trevos. Escolha 2 a 6.</span></li>
-                            <li class="flex items-start gap-2"><i class="ph-bold ph-trophy text-slate-600 mt-0.5"></i> <span><strong class="text-slate-700">Premiação:</strong> Várias faixas, começando com 2+1.</span></li>
-                        </ul>
-                    </div>
-                </div>
+    </div>
 
-                <!-- Dia de Sorte -->
-                <div class="bg-white p-6 rounded-3xl border border-gray-100 shadow-sm hover:shadow-md transition-all hover:-translate-y-1 flex flex-col h-full">
-                    <h4 class="font-bold text-amber-600 text-xl mb-3 flex items-center gap-2">
-                        <i class="ph-fill ph-calendar-check text-2xl"></i> Dia de Sorte
-                    </h4>
-                    <div class="space-y-3 text-sm flex flex-col flex-grow">
-                        <p class="text-gray-600">Aposte nos seus números da sorte e no seu mês favorito.</p>
-                        <ul class="bg-amber-50/50 p-4 rounded-xl space-y-2 mt-auto">
-                            <li class="flex items-start gap-2"><i class="ph-bold ph-hash text-amber-600 mt-0.5"></i> <span><strong class="text-amber-700">Universo:</strong> 31 números + 12 Meses.</span></li>
-                            <li class="flex items-start gap-2"><i class="ph-bold ph-pencil-simple text-amber-600 mt-0.5"></i> <span><strong class="text-amber-700">Aposta:</strong> 7 a 15 números + 1 Mês.</span></li>
-                            <li class="flex items-start gap-2"><i class="ph-bold ph-trophy text-amber-600 mt-0.5"></i> <span><strong class="text-amber-700">Premiação:</strong> 4, 5, 6, 7 acertos e/ou Mês.</span></li>
-                        </ul>
-                    </div>
-                </div>
+    <!-- Footer -->
+    <footer class="relative z-10 text-center text-white/60 text-xs py-8 w-full mt-auto">
+        <div class="flex flex-wrap justify-center gap-4 mb-3">
+            <a href="#sobre" class="hover:text-white underline transition-colors">Sobre</a>
+            <span>•</span>
+            <a href="#contato" class="hover:text-white underline transition-colors">Contato</a>
+            <span>•</span>
+            <a href="#termos" class="hover:text-white underline transition-colors">Termos de Uso</a>
+            <span>•</span>
+            <a href="#privacidade" class="hover:text-white underline transition-colors">Política de Privacidade</a>
+        </div>
+        <p>&copy; 2024 Sorteio Master - Todos os direitos reservados.</p>
+    </footer>
 
-                <!-- Dupla Sena -->
-                <div class="bg-white p-6 rounded-3xl border border-gray-100 shadow-sm hover:shadow-md transition-all hover:-translate-y-1 flex flex-col h-full">
-                    <h4 class="font-bold text-rose-700 text-xl mb-3 flex items-center gap-2">
-                        <i class="ph-fill ph-number-two text-2xl"></i> Dupla Sena
-                    </h4>
-                    <div class="space-y-3 text-sm flex flex-col flex-grow">
-                        <p class="text-gray-600">Dupla chance: concorra a 2 sorteios por concurso com o mesmo bilhete.</p>
-                        <ul class="bg-rose-50/50 p-4 rounded-xl space-y-2 mt-auto">
-                            <li class="flex items-start gap-2"><i class="ph-bold ph-hash text-rose-600 mt-0.5"></i> <span><strong class="text-rose-700">Universo:</strong> 50 números (01 a 50).</span></li>
-                            <li class="flex items-start gap-2"><i class="ph-bold ph-pencil-simple text-rose-600 mt-0.5"></i> <span><strong class="text-rose-700">Aposta:</strong> Escolha de 6 a 15 números.</span></li>
-                            <li class="flex items-start gap-2"><i class="ph-bold ph-trophy text-rose-600 mt-0.5"></i> <span><strong class="text-rose-700">Premiação:</strong> 3, 4, 5 ou 6 acertos em qualquer sorteio.</span></li>
-                        </ul>
-                    </div>
-                </div>
+    <!-- COOKIE CONSENT BANNER (LGPD/GDPR) -->
+    <div id="cookieBanner" class="fixed bottom-0 left-0 w-full bg-white border-t border-gray-200 shadow-[0_-4px_20px_rgba(0,0,0,0.1)] p-4 z-50 transform translate-y-full transition-transform duration-300 flex flex-col sm:flex-row items-center justify-center gap-4 text-center sm:text-left">
+        <div class="text-xs text-gray-600 max-w-2xl">
+            <strong class="text-gray-800">Este site utiliza cookies</strong> para melhorar sua experiência e exibir anúncios personalizados através do Google AdSense. Ao continuar navegando, você concorda com nossa <a href="#privacidade" class="text-blue-600 underline">Política de Privacidade</a>.
+        </div>
+        <button onclick="acceptCookies()" class="bg-emerald-600 text-white px-6 py-2 rounded-xl font-bold hover:bg-emerald-700 transition-colors text-xs whitespace-nowrap shadow-sm">
+            Aceitar e Continuar
+        </button>
+    </div>
 
-                <!-- Timemania -->
-                <div class="bg-white p-6 rounded-3xl border border-gray-100 shadow-sm hover:shadow-md transition-all hover:-translate-y-1 flex flex-col h-full">
-                    <h4 class="font-bold text-lime-600 text-xl mb-3 flex items-center gap-2">
-                        <i class="ph-fill ph-soccer-ball text-2xl"></i> Timemania
-                    </h4>
-                    <div class="space-y-3 text-sm flex flex-col flex-grow">
-                        <p class="text-gray-600">Para os apaixonados por futebol. Ajude seu time e concorra a prêmios.</p>
-                        <ul class="bg-lime-50/50 p-4 rounded-xl space-y-2 mt-auto">
-                            <li class="flex items-start gap-2"><i class="ph-bold ph-hash text-lime-600 mt-0.5"></i> <span><strong class="text-lime-700">Universo:</strong> 80 números + 80 Times.</span></li>
-                            <li class="flex items-start gap-2"><i class="ph-bold ph-pencil-simple text-lime-600 mt-0.5"></i> <span><strong class="text-lime-700">Aposta:</strong> 10 números + 1 Time.</span></li>
-                            <li class="flex items-start gap-2"><i class="ph-bold ph-trophy text-lime-600 mt-0.5"></i> <span><strong class="text-lime-700">Premiação:</strong> 3 a 7 acertos e/ou Time.</span></li>
-                        </ul>
-                    </div>
-                </div>
-
-            </div>
-            
-            <p class="text-center text-xs text-gray-400 mt-10 italic border-t border-gray-100 pt-6">
-                *As informações acima são baseadas nas regras oficiais da Caixa Econômica Federal. Este site não realiza apostas, funcionando apenas como uma ferramenta de geração de palpites aleatórios. Jogue com responsabilidade e apenas se for maior de 18 anos.
-            </p>
-        </section>
-
-        <!-- Footer -->
-        <footer class="text-center text-white/60 text-xs py-8 w-full">
-            <div class="flex justify-center gap-4 mb-2">
-                <button onclick="openModal('termsModal')" class="hover:text-white underline transition-colors">Termos de Uso</button>
-                <span>•</span>
-                <button onclick="openModal('privacyModal')" class="hover:text-white underline transition-colors">Política de Privacidade</button>
-            </div>
-            <p>&copy; 2024 Sorteio Master - Todos os direitos reservados.</p>
-        </footer>
-
-    </main>
-
-    <!-- Modals -->
     <!-- Donation Modal -->
     <div id="donationModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 modal-overlay">
         <div class="bg-white rounded-3xl shadow-2xl w-full max-w-md overflow-hidden flex flex-col animate-popIn">
             <div class="bg-yellow-50 p-6 border-b border-yellow-100 flex items-center gap-4">
-                <div class="bg-yellow-400 text-yellow-900 p-3 rounded-2xl shadow-sm">
-                    <i class="ph-fill ph-coffee text-2xl"></i>
-                </div>
-                <div>
-                    <h3 class="text-xl font-bold text-gray-800">Apoie o Projeto</h3>
-                    <p class="text-xs text-gray-500">Ajude a manter o site online e sem custos.</p>
-                </div>
-                <button onclick="closeModal('donationModal')" class="ml-auto text-gray-400 hover:text-gray-600 p-2">
-                    <i class="ph-bold ph-x text-xl"></i>
-                </button>
+                <div class="bg-yellow-400 text-yellow-900 p-3 rounded-2xl shadow-sm"><i class="ph-fill ph-coffee text-2xl"></i></div>
+                <div><h3 class="text-xl font-bold text-gray-800">Apoie o Projeto</h3><p class="text-xs text-gray-500">Ajude a manter o site online e sem custos.</p></div>
+                <button onclick="closeModal('donationModal')" class="ml-auto text-gray-400 hover:text-gray-600 p-2"><i class="ph-bold ph-x text-xl"></i></button>
             </div>
-            
             <div class="p-6">
                 <p class="text-sm text-gray-600 mb-4 text-center">Gostou do gerador? Sua contribuição ajuda a pagar os servidores e manter o site no ar!</p>
-                
-                <div class="flex justify-center mb-4">
-                    <img src="https://i.imgur.com/tZ93d7S.png" alt="QR Code Pix" class="w-48 h-48 rounded-xl shadow-md border border-gray-100">
-                </div>
-
+                <div class="flex justify-center mb-4"><img src="https://i.imgur.com/tZ93d7S.png" alt="QR Code Pix" class="w-48 h-48 rounded-xl shadow-md border border-gray-100"></div>
                 <div class="bg-gray-50 rounded-xl border border-gray-200 p-3 flex flex-col gap-2">
                     <label class="text-[10px] font-bold text-gray-400 uppercase">Chave Pix (Aleatória)</label>
                     <div class="flex items-center gap-2">
                         <code class="text-xs font-mono text-gray-600 truncate flex-1 select-all bg-white p-2 rounded border border-gray-100" id="pixKey">62956194-0328-498b-9d53-62f6969b9ccb</code>
-                        <button onclick="copyPix()" class="bg-yellow-500 hover:bg-yellow-600 text-white p-2 rounded-lg transition-colors flex-shrink-0 active:scale-95 shadow-sm" title="Copiar">
-                            <i class="ph-bold ph-copy"></i>
-                        </button>
+                        <button onclick="copyPix()" class="bg-yellow-500 hover:bg-yellow-600 text-white p-2 rounded-lg transition-colors flex-shrink-0 active:scale-95 shadow-sm" title="Copiar"><i class="ph-bold ph-copy"></i></button>
                     </div>
                 </div>
             </div>
-            
-            <div class="p-4 bg-gray-50 text-center border-t border-gray-100">
-                <p class="text-xs text-gray-400">Obrigado pelo seu apoio! 🍀</p>
-            </div>
+            <div class="p-4 bg-gray-50 text-center border-t border-gray-100"><p class="text-xs text-gray-400">Obrigado pelo seu apoio! 🍀</p></div>
         </div>
     </div>
 
-    <!-- Terms Modal -->
-    <div id="termsModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 modal-overlay">
-        <div class="bg-white rounded-3xl shadow-2xl w-full max-w-2xl max-h-[80vh] overflow-hidden flex flex-col">
-            <div class="p-6 border-b border-gray-100 flex justify-between items-center">
-                <h3 class="text-xl font-bold text-gray-800">Termos de Uso</h3>
-                <button onclick="closeModal('termsModal')" class="text-gray-400 hover:text-gray-600 p-2">
-                    <i class="ph-bold ph-x text-xl"></i>
-                </button>
-            </div>
-            <div class="p-6 overflow-y-auto text-gray-600 text-sm leading-relaxed space-y-4">
-                <p>Bem-vindo ao <strong>Sorteio Master</strong>. Ao utilizar nosso site, você concorda com os seguintes termos:</p>
-                
-                <h4 class="font-bold text-gray-800">1. Natureza do Serviço</h4>
-                <p>O Sorteio Master é uma ferramenta gratuita de entretenimento que gera combinações numéricas aleatórias. Este site <strong>não realiza apostas</strong>, não processa pagamentos relacionados a jogos de azar e não possui qualquer vínculo com a Caixa Econômica Federal ou outras entidades oficiais de loteria.</p>
-
-                <h4 class="font-bold text-gray-800">2. Isenção de Garantias</h4>
-                <p>Os números são gerados de forma matematicamente aleatória. Não há nenhuma garantia de acerto, ganho ou aumento de probabilidade de vitória ao utilizar nossas sugestões. O uso das combinações geradas é de total responsabilidade do usuário.</p>
-
-                <h4 class="font-bold text-gray-800">3. Responsabilidade do Usuário</h4>
-                <p>O usuário declara ser maior de 18 anos e estar ciente de que jogos de loteria envolvem riscos financeiros. Recomendamos o jogo responsável e consciente.</p>
-
-                <h4 class="font-bold text-gray-800">4. Alterações</h4>
-                <p>Reservamo-nos o direito de modificar ou descontinuar o serviço a qualquer momento, sem aviso prévio.</p>
-            </div>
-            <div class="p-4 border-t border-gray-100 bg-gray-50 text-center">
-                <button onclick="closeModal('termsModal')" class="px-6 py-2 bg-gray-800 text-white rounded-xl font-bold hover:bg-gray-900 transition-colors">Entendi</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Privacy Modal -->
-    <div id="privacyModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 modal-overlay">
-        <div class="bg-white rounded-3xl shadow-2xl w-full max-w-2xl max-h-[80vh] overflow-hidden flex flex-col">
-            <div class="p-6 border-b border-gray-100 flex justify-between items-center">
-                <h3 class="text-xl font-bold text-gray-800">Política de Privacidade</h3>
-                <button onclick="closeModal('privacyModal')" class="text-gray-400 hover:text-gray-600 p-2">
-                    <i class="ph-bold ph-x text-xl"></i>
-                </button>
-            </div>
-            <div class="p-6 overflow-y-auto text-gray-600 text-sm leading-relaxed space-y-4">
-                <p>Sua privacidade é importante para nós. Esta política explica como tratamos suas informações:</p>
-                
-                <h4 class="font-bold text-gray-800">1. Coleta de Dados</h4>
-                <p>O Sorteio Master é uma aplicação que roda principalmente no lado do cliente (seu navegador). <strong>Não coletamos, armazenamos ou transmitimos</strong> dados pessoais, históricos de geração de números ou informações de identificação pessoal de nossos usuários.</p>
-
-                <h4 class="font-bold text-gray-800">2. Cookies e Armazenamento Local</h4>
-                <p>Atualmente, não utilizamos cookies para rastreamento. Podemos utilizar o armazenamento local do seu navegador apenas para salvar preferências de configuração (como o último jogo selecionado) para melhorar sua experiência, sem enviar esses dados para servidores externos.</p>
-
-                <h4 class="font-bold text-gray-800">3. Links Externos e Anúncios</h4>
-                <p>O site pode conter espaços para publicidade ou links para sites de terceiros. Não nos responsabilizamos pelas práticas de privacidade desses sites parceiros.</p>
-
-                <h4 class="font-bold text-gray-800">4. Contato</h4>
-                <p>Para dúvidas sobre esta política, entre em contato através dos canais disponíveis na plataforma (se houver).</p>
-            </div>
-            <div class="p-4 border-t border-gray-100 bg-gray-50 text-center">
-                <button onclick="closeModal('privacyModal')" class="px-6 py-2 bg-gray-800 text-white rounded-xl font-bold hover:bg-gray-900 transition-colors">Entendi</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Toast Notification -->
-    <div id="toast" class="fixed bottom-8 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white px-6 py-3 rounded-xl shadow-2xl flex items-center gap-3 transition-all duration-300 opacity-0 translate-y-10 pointer-events-none z-50">
+    <!-- Toast -->
+    <div id="toast" class="fixed bottom-24 sm:bottom-8 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white px-6 py-3 rounded-xl shadow-2xl flex items-center gap-3 transition-all duration-300 opacity-0 translate-y-10 pointer-events-none z-50">
         <i class="ph-fill ph-check-circle text-green-400 text-xl"></i>
         <span class="font-medium text-sm" id="toastText">Copiado com sucesso!</span>
     </div>
 
     <script>
-        // --- Game Configuration Data ---
+        // --- Configuration ---
         const games = {
-            mega: {
-                id: 'mega',
-                name: 'Mega-Sena',
-                colorClass: 'bg-emerald-600',
-                ballColor: 'border-emerald-500 text-emerald-700 bg-emerald-50',
-                colorCode: 'text-emerald-600',
-                min: 1,
-                max: 60,
-                defaultCount: 6,
-                minCount: 6,
-                maxCount: 20, 
-                gradient: 'from-emerald-600 to-teal-500'
-            },
-            lotofacil: {
-                id: 'lotofacil',
-                name: 'Lotofácil',
-                colorClass: 'bg-fuchsia-600',
-                ballColor: 'border-fuchsia-500 text-fuchsia-700 bg-fuchsia-50',
-                colorCode: 'text-fuchsia-600',
-                min: 1,
-                max: 25,
-                defaultCount: 15,
-                minCount: 15,
-                maxCount: 20,
-                gradient: 'from-fuchsia-600 to-purple-600'
-            },
-            quina: {
-                id: 'quina',
-                name: 'Quina',
-                colorClass: 'bg-indigo-600',
-                ballColor: 'border-indigo-500 text-indigo-700 bg-indigo-50',
-                colorCode: 'text-indigo-600',
-                min: 1,
-                max: 80,
-                defaultCount: 5,
-                minCount: 5,
-                maxCount: 15,
-                gradient: 'from-indigo-600 to-blue-600'
-            },
-            lotomania: {
-                id: 'lotomania',
-                name: 'Lotomania',
-                colorClass: 'bg-orange-500',
-                ballColor: 'border-orange-500 text-orange-700 bg-orange-50',
-                colorCode: 'text-orange-500',
-                min: 0,
-                max: 99,
-                defaultCount: 20, 
-                minCount: 15,
-                maxCount: 50,
-                gradient: 'from-orange-500 to-amber-500'
-            },
-            duplasena: {
-                id: 'duplasena',
-                name: 'Dupla Sena',
-                colorClass: 'bg-rose-600',
-                ballColor: 'border-rose-500 text-rose-700 bg-rose-50',
-                colorCode: 'text-rose-600',
-                min: 1,
-                max: 50,
-                defaultCount: 6,
-                minCount: 6,
-                maxCount: 15,
-                gradient: 'from-rose-600 to-red-500'
-            },
-            diadesorte: {
-                id: 'diadesorte',
-                name: 'Dia de Sorte',
-                colorClass: 'bg-amber-500',
-                ballColor: 'border-amber-500 text-amber-700 bg-amber-50',
-                colorCode: 'text-amber-500',
-                min: 1,
-                max: 31,
-                defaultCount: 7,
-                minCount: 7,
-                maxCount: 15,
-                hasMonth: true,
-                gradient: 'from-amber-500 to-yellow-500'
-            },
-            milionaria: {
-                id: 'milionaria',
-                name: '+Milionária',
-                colorClass: 'bg-slate-700',
-                ballColor: 'border-slate-500 text-slate-700 bg-slate-50',
-                colorCode: 'text-slate-600',
-                min: 1,
-                max: 50,
-                defaultCount: 6,
-                minCount: 6,
-                maxCount: 12, 
-                hasTrevos: true,
-                gradient: 'from-slate-700 to-gray-800'
-            },
-            timemania: {
-                id: 'timemania',
-                name: 'Timemania',
-                colorClass: 'bg-lime-500',
-                ballColor: 'border-lime-500 text-lime-700 bg-lime-50',
-                colorCode: 'text-lime-600',
-                min: 1,
-                max: 80,
-                defaultCount: 10,
-                minCount: 10,
-                maxCount: 10,
-                gradient: 'from-lime-500 to-green-500'
-            }
+            mega: { id: 'mega', name: 'Mega-Sena', colorClass: 'bg-emerald-600', ballColor: 'border-emerald-500 text-emerald-700 bg-emerald-50', colorCode: 'text-emerald-600', min: 1, max: 60, defaultCount: 6, minCount: 6, maxCount: 20, gradient: 'from-emerald-600 to-teal-500', universe: '60 números (01 a 60)', rules: 'Ganha quem acertar 4, 5 ou 6 números.' },
+            lotofacil: { id: 'lotofacil', name: 'Lotofácil', colorClass: 'bg-fuchsia-600', ballColor: 'border-fuchsia-500 text-fuchsia-700 bg-fuchsia-50', colorCode: 'text-fuchsia-600', min: 1, max: 25, defaultCount: 15, minCount: 15, maxCount: 20, gradient: 'from-fuchsia-600 to-purple-600', universe: '25 números (01 a 25)', rules: 'Ganha quem acertar 11 a 15 números.' },
+            quina: { id: 'quina', name: 'Quina', colorClass: 'bg-indigo-600', ballColor: 'border-indigo-500 text-indigo-700 bg-indigo-50', colorCode: 'text-indigo-600', min: 1, max: 80, defaultCount: 5, minCount: 5, maxCount: 15, gradient: 'from-indigo-600 to-blue-600', universe: '80 números (01 a 80)', rules: 'Ganha quem acertar 2, 3, 4 ou 5 números.' },
+            lotomania: { id: 'lotomania', name: 'Lotomania', colorClass: 'bg-orange-500', ballColor: 'border-orange-500 text-orange-700 bg-orange-50', colorCode: 'text-orange-500', min: 0, max: 99, defaultCount: 20, minCount: 15, maxCount: 50, gradient: 'from-orange-500 to-amber-500', universe: '100 números (00 a 99)', rules: 'Ganha acertando 20, 19, 18, 17, 16, 15 ou 0.' },
+            duplasena: { id: 'duplasena', name: 'Dupla Sena', colorClass: 'bg-rose-600', ballColor: 'border-rose-500 text-rose-700 bg-rose-50', colorCode: 'text-rose-600', min: 1, max: 50, defaultCount: 6, minCount: 6, maxCount: 15, gradient: 'from-rose-600 to-red-500', universe: '50 números (01 a 50)', rules: '3, 4, 5 ou 6 acertos em qualquer sorteio.' },
+            diadesorte: { id: 'diadesorte', name: 'Dia de Sorte', colorClass: 'bg-amber-500', ballColor: 'border-amber-500 text-amber-700 bg-amber-50', colorCode: 'text-amber-500', min: 1, max: 31, defaultCount: 7, minCount: 7, maxCount: 15, hasMonth: true, gradient: 'from-amber-500 to-yellow-500', universe: '31 números + 12 Meses', rules: '4, 5, 6, 7 acertos e/ou Mês.' },
+            milionaria: { id: 'milionaria', name: '+Milionária', colorClass: 'bg-slate-700', ballColor: 'border-slate-500 text-slate-700 bg-slate-50', colorCode: 'text-slate-600', min: 1, max: 50, defaultCount: 6, minCount: 6, maxCount: 12, hasTrevos: true, gradient: 'from-slate-700 to-gray-800', universe: '50 números + 6 Trevos', rules: 'Várias faixas, começando com 2+1.' },
+            timemania: { id: 'timemania', name: 'Timemania', colorClass: 'bg-lime-500', ballColor: 'border-lime-500 text-lime-700 bg-lime-50', colorCode: 'text-lime-600', min: 1, max: 80, defaultCount: 10, minCount: 10, maxCount: 10, gradient: 'from-lime-500 to-green-500', universe: '80 números + 80 Times', rules: '3 a 7 acertos e/ou Time.' }
         };
-
         const months = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
 
         // --- State ---
         let currentGame = games.mega;
         let currentNumCount = games.mega.defaultCount;
         let currentGamesCount = 1;
-        
         let allGeneratedGames = []; 
         let selectedIndices = new Set();
 
@@ -685,19 +462,52 @@
         const btnCopyMain = document.getElementById('btnCopyMain');
         const copyCountBadge = document.getElementById('copyCountBadge');
         const copyIconMain = document.getElementById('copyIconMain');
+        const guideCardsContainer = document.getElementById('guideCardsContainer');
+        const cookieBanner = document.getElementById('cookieBanner');
 
-        // --- Initialization ---
+        // --- Init ---
         function init() {
             renderGameSelector();
+            renderGuideCards(); 
             selectGame('mega');
+            handleRouting();
+            checkCookies();
 
-            // Habilita rolagem horizontal com a rodinha do mouse no Desktop
             gameSelector.addEventListener('wheel', (evt) => {
                 evt.preventDefault();
                 gameSelector.scrollLeft += evt.deltaY;
             });
         }
 
+        // --- Routing ---
+        function handleRouting() {
+            const hash = window.location.hash.replace('#', '') || 'home';
+            const routeMap = { 'home': 'home', 'inicio': 'home', 'sobre': 'about', 'contato': 'contact', 'termos': 'terms', 'privacidade': 'privacy' };
+            const targetId = routeMap[hash] || 'home';
+            
+            document.querySelectorAll('.page-content').forEach(p => p.classList.remove('active'));
+            const target = document.getElementById(`page-${targetId}`);
+            if(target) {
+                target.classList.add('active');
+                window.scrollTo(0,0);
+            }
+        }
+
+        // --- Cookie Logic ---
+        function checkCookies() {
+            if (!localStorage.getItem('cookiesAccepted')) {
+                setTimeout(() => {
+                    cookieBanner.classList.remove('translate-y-full');
+                }, 1500);
+            }
+        }
+
+        function acceptCookies() {
+            localStorage.setItem('cookiesAccepted', 'true');
+            cookieBanner.classList.add('translate-y-full');
+        }
+
+        // --- Rendering ---
         function renderGameSelector() {
             gameSelector.innerHTML = '';
             Object.values(games).forEach(game => {
@@ -710,41 +520,47 @@
             });
         }
 
+        function renderGuideCards() {
+            guideCardsContainer.innerHTML = '';
+            Object.values(games).forEach(game => {
+                const card = document.createElement('div');
+                card.className = "bg-white p-6 rounded-3xl border border-gray-100 shadow-sm hover:shadow-md transition-all hover:-translate-y-1 flex flex-col h-full";
+                card.innerHTML = `
+                    <h4 class="font-bold ${game.colorCode.replace('600','700')} text-xl mb-3 flex items-center gap-2"><i class="ph-fill ${getIconForGame(game.id)} text-2xl"></i> ${game.name}</h4>
+                    <div class="space-y-3 text-sm flex flex-col flex-grow">
+                        <ul class="${game.colorClass.replace('bg-', 'bg-').replace('600','50').replace('500','50').replace('700','50')}/50 p-4 rounded-xl space-y-2 mt-auto h-full">
+                            <li class="flex items-start gap-2"><i class="ph-bold ph-hash ${game.colorCode} mt-0.5"></i> <span><strong class="${game.colorCode.replace('600','800')}">Universo:</strong> ${game.universe}</span></li>
+                            <li class="flex items-start gap-2"><i class="ph-bold ph-pencil-simple ${game.colorCode} mt-0.5"></i> <span><strong class="${game.colorCode.replace('600','800')}">Aposta:</strong> ${game.minCount} a ${game.maxCount} núm.</span></li>
+                            <li class="flex items-start gap-2"><i class="ph-bold ph-trophy ${game.colorCode} mt-0.5"></i> <span><strong class="${game.colorCode.replace('600','800')}">Regra:</strong> ${game.rules}</span></li>
+                        </ul>
+                    </div>`;
+                guideCardsContainer.appendChild(card);
+            });
+        }
+
+        function getIconForGame(id) {
+            const map = { mega: 'ph-clover', lotofacil: 'ph-star', quina: 'ph-diamond', lotomania: 'ph-users-three', duplasena: 'ph-number-two', diadesorte: 'ph-calendar-check', milionaria: 'ph-coins', timemania: 'ph-soccer-ball' };
+            return map[id] || 'ph-hash';
+        }
+
         function selectGame(gameId) {
             currentGame = games[gameId];
             currentNumCount = currentGame.defaultCount;
-            // Reset to clean state
             currentGamesCount = 1;
             allGeneratedGames = [];
             selectedIndices.clear();
             updateCopyButtonUI();
 
-            // Visual Updates - Mantém o gradiente mas ajusta para não conflitar com layout de duas colunas
-            // No desktop, o fundo é o gradiente, e os containers são vidro/branco
-            mainBody.className = `min-h-screen p-4 transition-colors duration-700 md:p-8 bg-gradient-to-br ${currentGame.gradient}`;
-            
+            mainBody.className = `min-h-screen p-4 transition-colors duration-700 md:p-8 flex flex-col bg-gradient-to-br ${currentGame.gradient}`;
             gameTitle.innerText = currentGame.name;
             gameTitle.className = `text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r ${currentGame.gradient}`;
-            
-            let rangeText = `${currentGame.min} a ${currentGame.max}`;
-            if(currentGame.id === 'lotomania') rangeText = "00 a 99";
+            let rangeText = currentGame.id === 'lotomania' ? "00 a 99" : `${currentGame.min} a ${currentGame.max}`;
             gameRules.innerText = `Faixa: ${rangeText}`;
-
-            // Reset UI
             numberCountDisplay.innerText = currentNumCount;
             gamesCountDisplay.innerText = currentGamesCount;
-            
-            resultsArea.innerHTML = `
-                <div class="text-center text-gray-400 py-8">
-                    <i class="ph-duotone ph-magic-wand text-4xl mb-2 opacity-50"></i>
-                    <p class="text-sm">Toque em gerar</p>
-                </div>
-            `;
-
-            // Button Color
+            resultsArea.innerHTML = `<div class="text-center text-gray-400 py-8"><i class="ph-duotone ph-magic-wand text-4xl mb-2 opacity-50"></i><p class="text-sm">Toque em gerar</p></div>`;
             btnGenerate.className = `col-span-3 py-4 rounded-2xl text-white font-bold text-lg shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2 group active:scale-95 bg-gradient-to-r ${currentGame.gradient}`;
 
-            // Update Tabs
             Object.values(games).forEach(g => {
                 const btn = document.getElementById(`btn-select-${g.id}`);
                 if (g.id === currentGame.id) {
@@ -755,7 +571,6 @@
             });
         }
 
-        // --- Adjusters ---
         function adjustCount(delta) {
             let newCount = currentNumCount + delta;
             if (newCount >= currentGame.minCount && newCount <= currentGame.maxCount) {
@@ -766,13 +581,12 @@
 
         function adjustGameCount(delta) {
             let newCount = currentGamesCount + delta;
-            if (newCount >= 1 && newCount <= 50) { 
+            if (newCount >= 1 && newCount <= 50) {
                 currentGamesCount = newCount;
                 gamesCountDisplay.innerText = currentGamesCount;
             }
         }
 
-        // --- Logic ---
         function generateSingleGame() {
             const nums = new Set();
             while(nums.size < currentNumCount) {
@@ -780,12 +594,10 @@
                 nums.add(n);
             }
             const sortedNums = Array.from(nums).sort((a, b) => a - b);
-            
             let formattedNums = sortedNums.map(n => {
                 if (currentGame.id === 'lotomania' && n === 0) return "00";
                 return n.toString().padStart(2, '0');
             });
-
             let extra = null;
             if (currentGame.hasMonth) {
                 extra = `Mês: ${months[Math.floor(Math.random() * 12)]}`;
@@ -796,7 +608,6 @@
                 const trevos = [t1, t2].sort((a,b)=>a-b);
                 extra = `Trevos: ${trevos.join(' e ')}`;
             }
-
             return { numbers: formattedNums, extras: extra };
         }
 
@@ -804,74 +615,37 @@
             allGeneratedGames = [];
             selectedIndices.clear();
             updateCopyButtonUI();
-            resultsArea.innerHTML = ''; 
-
-            for(let i = 0; i < currentGamesCount; i++) {
-                allGeneratedGames.push(generateSingleGame());
-            }
-
+            resultsArea.innerHTML = '';
+            for(let i = 0; i < currentGamesCount; i++) allGeneratedGames.push(generateSingleGame());
             renderResults();
         }
 
         function renderResults() {
             allGeneratedGames.forEach((game, index) => {
-                // Container for Single Game Row
                 const row = document.createElement('div');
-                // ID for easier DOM manipulation later
                 row.id = `game-row-${index}`;
-                
                 const isSelected = selectedIndices.has(index);
-                // Style selection
-                
-                // Add specific styling for selected state via JS during render
-                if(isSelected) {
-                   row.style.borderColor = 'currentColor'; 
-                   row.classList.add(currentGame.colorCode);
-                }
-
+                if(isSelected) { row.style.borderColor = 'currentColor'; row.classList.add(currentGame.colorCode); }
                 row.className = `ball-enter bg-white p-3 rounded-2xl shadow-sm flex flex-col sm:flex-row items-center justify-between gap-3 transition-all duration-200 cursor-pointer hover:shadow-md ${isSelected ? `ring-2 ring-offset-1 ring-current ${currentGame.colorCode}` : 'border border-gray-100'}`;
-                
                 row.style.animationDelay = `${index * 0.05}s`;
-                
-                // Click on row toggles selection (unless clicking buttons)
-                row.onclick = (e) => {
-                    if(e.target.closest('button')) return; // Ignore if clicking the copy button
-                    toggleSelection(index);
-                };
+                row.onclick = (e) => { if(e.target.closest('button')) return; toggleSelection(index); };
 
-                // Left Side: Checkbox & Label
                 const leftDiv = document.createElement('div');
                 leftDiv.className = 'flex items-center gap-3 w-full sm:w-auto';
-
-                // Custom Checkbox
-                const checkboxHtml = `
-                    <label class="custom-checkbox relative flex items-center justify-center w-6 h-6 cursor-pointer">
-                        <input type="checkbox" class="peer appearance-none w-full h-full" ${isSelected ? 'checked' : ''} onchange="toggleSelection(${index})">
-                        <div class="checkmark-bg absolute inset-0 rounded-lg border-2 border-gray-200 transition-all duration-200 peer-checked:bg-gray-800 peer-checked:border-gray-800"></div>
-                        <i class="ph-bold ph-check text-white text-xs absolute transform scale-0 transition-transform duration-200 z-10"></i>
-                    </label>
-                `;
-                
-                // Index Badge
+                const checkboxHtml = `<label class="custom-checkbox relative flex items-center justify-center w-6 h-6 cursor-pointer"><input type="checkbox" class="peer appearance-none w-full h-full" ${isSelected ? 'checked' : ''} onchange="toggleSelection(${index})"><div class="checkmark-bg absolute inset-0 rounded-lg border-2 border-gray-200 transition-all duration-200 peer-checked:bg-gray-800 peer-checked:border-gray-800"></div><i class="ph-bold ph-check text-white text-xs absolute transform scale-0 transition-transform duration-200 z-10"></i></label>`;
                 const badge = `<div class="bg-gray-100 text-gray-400 text-[10px] font-bold px-2 py-1 rounded-lg uppercase tracking-wider min-w-[50px] text-center select-none">#${index + 1}</div>`;
-                
                 leftDiv.innerHTML = checkboxHtml + badge;
 
-
-                // Middle: Numbers
                 const numsContainer = document.createElement('div');
-                numsContainer.className = 'flex flex-wrap justify-center gap-2 flex-1 pointer-events-none'; 
-
+                numsContainer.className = 'flex flex-wrap justify-center gap-2 flex-1 pointer-events-none';
                 const isCompact = currentNumCount > 10 || currentGamesCount > 5;
                 const ballSize = isCompact ? 'w-8 h-8 text-xs' : 'w-10 h-10 text-sm';
-
                 game.numbers.forEach(num => {
                     const ball = document.createElement('span');
                     ball.className = `flex items-center justify-center rounded-full font-bold border ${currentGame.ballColor} ${ballSize}`;
                     ball.innerText = num;
                     numsContainer.appendChild(ball);
                 });
-
                 if (game.extras) {
                     const extraBadge = document.createElement('span');
                     extraBadge.className = 'text-xs font-semibold text-gray-500 bg-gray-50 px-2 py-1 rounded-md border border-gray-100 whitespace-nowrap';
@@ -879,15 +653,11 @@
                     numsContainer.appendChild(extraBadge);
                 }
 
-                // Right: Individual Copy Button
                 const copyBtn = document.createElement('button');
                 copyBtn.className = 'w-8 h-8 flex items-center justify-center rounded-lg text-gray-400 hover:text-gray-800 hover:bg-gray-100 transition-colors flex-shrink-0 z-10';
                 copyBtn.innerHTML = '<i class="ph-bold ph-copy"></i>';
                 copyBtn.title = "Copiar este jogo";
-                copyBtn.onclick = (e) => {
-                    e.stopPropagation(); // Prevent row selection when clicking copy
-                    copySingleGame(index);
-                };
+                copyBtn.onclick = (e) => { e.stopPropagation(); copySingleGame(index); };
 
                 row.appendChild(leftDiv);
                 row.appendChild(numsContainer);
@@ -896,20 +666,16 @@
             });
         }
 
-        // --- Selection Logic ---
         function toggleSelection(index) {
             const row = document.getElementById(`game-row-${index}`);
             const checkbox = row.querySelector('input[type="checkbox"]');
-            
             if (selectedIndices.has(index)) {
                 selectedIndices.delete(index);
-                // Remove Styles
                 row.classList.remove('ring-2', 'ring-offset-1', 'ring-current', currentGame.colorCode);
                 row.classList.add('border', 'border-gray-100');
                 if(checkbox) checkbox.checked = false;
             } else {
                 selectedIndices.add(index);
-                // Add Styles
                 row.classList.remove('border', 'border-gray-100');
                 row.classList.add('ring-2', 'ring-offset-1', 'ring-current', currentGame.colorCode);
                 if(checkbox) checkbox.checked = true;
@@ -919,9 +685,7 @@
 
         function updateCopyButtonUI() {
             const count = selectedIndices.size;
-            
             if (count > 0) {
-                // Mode: Copy Selected
                 copyIconMain.className = "ph-fill ph-copy-simple text-xl"; 
                 copyCountBadge.innerText = count;
                 copyCountBadge.classList.remove('hidden');
@@ -929,7 +693,6 @@
                 btnCopyMain.classList.remove('border-gray-200', 'text-gray-600');
                 btnCopyMain.title = `Copiar ${count} jogos selecionados`;
             } else {
-                // Mode: Copy All
                 copyIconMain.className = "ph-bold ph-copy text-xl";
                 copyCountBadge.classList.add('hidden');
                 btnCopyMain.classList.remove('border-gray-800', 'text-gray-900');
@@ -938,127 +701,92 @@
             }
         }
 
-        // --- Clipboard Handling ---
-        
-        // Helper to perform copy
         function copyTextToClipboard(text, successMsg) {
-            // Using execCommand for better compatibility in iframes/previews
             const textArea = document.createElement("textarea");
             textArea.value = text;
-            
-            // Ensure element is part of DOM but invisible to user layout
             textArea.style.position = "fixed";
             textArea.style.left = "-9999px";
             textArea.style.top = "0";
-            
             document.body.appendChild(textArea);
             textArea.focus();
             textArea.select();
-            
             try {
                 const successful = document.execCommand('copy');
-                if (successful) {
-                    showToast(successMsg);
-                } else {
-                    console.error("Falha ao copiar.");
-                }
-            } catch (err) {
-                console.error("Erro ao copiar", err);
-            }
-            
+                if (successful) showToast(successMsg);
+            } catch (err) { console.error("Erro ao copiar", err); }
             document.body.removeChild(textArea);
         }
 
-        // 1. Copy Single
         function copySingleGame(index) {
             const game = allGeneratedGames[index];
             let text = `🎲 ${currentGame.name} - Jogo ${index + 1}: ${game.numbers.join(' - ')}`;
             if (game.extras) text += ` (${game.extras})`;
-            
             copyTextToClipboard(text, "Jogo copiado!");
         }
 
-        // 2. Main Copy Handler (Context Aware)
         function handleMainCopy() {
             if (allGeneratedGames.length === 0) return;
-
             let gamesToCopy = [];
             let isSelectionMode = selectedIndices.size > 0;
-
             if (isSelectionMode) {
-                // Sort indices to keep order correct
                 const indices = Array.from(selectedIndices).sort((a,b) => a-b);
                 gamesToCopy = indices.map(i => ({ data: allGeneratedGames[i], index: i }));
             } else {
                 gamesToCopy = allGeneratedGames.map((g, i) => ({ data: g, index: i }));
             }
-
             let textToCopy = `🍀 Sorteio Master - ${currentGame.name}\n`;
-            
             gamesToCopy.forEach(item => {
                 textToCopy += `\n🎫 Jogo ${item.index + 1}: ${item.data.numbers.join(' - ')}`;
                 if (item.data.extras) textToCopy += ` (${item.data.extras})`;
             });
-            
             textToCopy += `\n\nBoa sorte!`;
-            
-            const msg = isSelectionMode 
-                ? `${gamesToCopy.length} jogos selecionados copiados!` 
-                : (allGeneratedGames.length > 1 ? "Todos os jogos copiados!" : "Jogo copiado!");
-                
+            const msg = isSelectionMode ? `${gamesToCopy.length} jogos selecionados copiados!` : (allGeneratedGames.length > 1 ? "Todos os jogos copiados!" : "Jogo copiado!");
             copyTextToClipboard(textToCopy, msg);
         }
 
         function showToast(msg) {
             const toast = document.getElementById('toast');
             const toastText = document.getElementById('toastText');
-            
             toastText.innerText = msg;
-            
             toast.classList.remove('opacity-0', 'translate-y-10');
-            
-            // Clear previous timeout if spamming buttons
             if(window.toastTimeout) clearTimeout(window.toastTimeout);
-            
             window.toastTimeout = setTimeout(() => {
                 toast.classList.add('opacity-0', 'translate-y-10');
             }, 3000);
         }
 
-        // --- Pix Copy ---
         function copyPix() {
             const pixKey = document.getElementById('pixKey').innerText;
             copyTextToClipboard(pixKey, "Chave Pix copiada!");
         }
 
-        // --- Modal Logic ---
         function openModal(modalId) {
             const modal = document.getElementById(modalId);
             modal.classList.remove('hidden');
-            document.body.style.overflow = 'hidden'; // Prevent scrolling bg
+            document.body.style.overflow = 'hidden'; 
         }
 
         function closeModal(modalId) {
             const modal = document.getElementById(modalId);
             modal.classList.add('hidden');
-            document.body.style.overflow = ''; // Restore scrolling
+            document.body.style.overflow = ''; 
         }
 
-        // --- Share Logic ---
         function shareSite() {
             if (navigator.share) {
                 navigator.share({
                     title: 'Sorteio Master',
                     text: 'Gere seus números da sorte para as Loterias Caixa!',
                     url: window.location.href,
-                })
-                .catch((error) => console.log('Erro ao compartilhar', error));
+                }).catch((error) => console.log('Erro ao compartilhar', error));
             } else {
                 copyTextToClipboard(window.location.href, "Link copiado!");
             }
         }
 
-        // Close on click outside
+        // Listeners
+        window.addEventListener('hashchange', handleRouting);
+        window.addEventListener('load', handleRouting);
         window.onclick = function(event) {
             if (event.target.classList.contains('modal-overlay')) {
                 event.target.classList.add('hidden');
